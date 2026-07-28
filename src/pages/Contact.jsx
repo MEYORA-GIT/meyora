@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { FAQS } from '../data/content';
 import { useToggleIndex } from '../hooks/useToggleIndex';
 import Select from '../components/Select';
+import { LogoMark } from '../components/Logo';
 
 const INDUSTRY_OPTIONS = [
   'Manufacturing',
@@ -206,7 +207,7 @@ export default function Contact() {
           >
             {status === 'sent' ? (
               <div className="rise-in" style={{ display: 'flex', flexDirection: 'column', gap: 16, padding: '40px 0' }}>
-                <span style={{ width: 34, height: 34, borderRadius: '50%', background: 'var(--accent, #B8853C)' }} />
+                <LogoMark size={34} style={{ color: 'var(--ink, #101317)' }} />
                 <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 28, fontWeight: 500, letterSpacing: '-0.02em', margin: 0 }}>
                   Thank you — we&apos;re reading it now.
                 </h3>

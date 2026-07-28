@@ -1,4 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom';
+import { LogoMark, Wordmark } from './Logo';
 
 const LINKS = [
   { to: '/', label: 'Home', end: true },
@@ -14,37 +15,21 @@ export default function Navbar() {
       <div className="nav-inner">
         <button
           onClick={() => navigate('/')}
+          aria-label="Meyora — home"
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: 12,
+            gap: 10,
             background: 'none',
             border: 'none',
             padding: 0,
             cursor: 'pointer',
+            flex: 'none',
           }}
         >
-          <span
-            style={{
-              width: 11,
-              height: 11,
-              background: 'var(--accent, #B8853C)',
-              borderRadius: 3,
-              display: 'block',
-              transform: 'rotate(45deg)',
-            }}
-          />
-          <span
-            style={{
-              fontFamily: "'Space Grotesk', sans-serif",
-              fontWeight: 600,
-              fontSize: 18,
-              letterSpacing: '-0.02em',
-              color: '#FFFFFF',
-            }}
-          >
-            Meyora
-          </span>
+          {/* brand mark is monochrome black; inverted to white on the dark bar */}
+          <LogoMark size={21} style={{ color: '#FFFFFF', flex: 'none' }} />
+          <Wordmark size={15} />
         </button>
 
         <div className="nav-links">

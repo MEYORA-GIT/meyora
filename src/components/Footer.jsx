@@ -1,3 +1,5 @@
+import { LogoMark, Wordmark } from './Logo';
+
 export default function Footer() {
   return (
     <footer
@@ -20,19 +22,9 @@ export default function Footer() {
           fontSize: 13.5,
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <span
-            style={{
-              width: 10,
-              height: 10,
-              background: 'var(--accent, #B8853C)',
-              borderRadius: 2,
-              transform: 'rotate(45deg)',
-            }}
-          />
-          <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 16, color: '#FFFFFF' }}>
-            Meyora
-          </span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <LogoMark size={20} style={{ color: '#FFFFFF', flex: 'none' }} />
+          <Wordmark size={14} />
         </div>
         <span>We don&rsquo;t build software. We solve problems worth solving.</span>
         <span>© 2026 Meyora</span>
