@@ -574,9 +574,11 @@ button {
   width: 100%;
 }
 
-/* First section of pages whose hero doesn't fill the screen — clears the fixed nav */
+/* First section of pages whose hero doesn't fill the screen. Clears the fixed nav
+   plus a viewport-relative breathing gap — not the full --space-hero, which left
+   a large dead band under the bar. */
 .page-top {
-  padding-top: calc(var(--space-hero) + var(--nav-h));
+  padding-top: calc(var(--nav-h) + clamp(24px, 4.5vh, 68px));
 }
 
 .nav-links {
