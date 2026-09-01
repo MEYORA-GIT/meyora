@@ -1,6 +1,6 @@
 # Meyora
 
-Marketing website for Meyora — [meyora.in](https://meyora.in)
+Marketing website for Meyora — [meyora.in](https://www.meyora.in)
 
 > We don't build software. We solve problems worth solving.
 
@@ -87,7 +87,7 @@ Static build; any static host works (Netlify, Vercel, Cloudflare Pages).
 - **Do not add a catch-all `/* → /index.html` SPA rewrite.** It would serve the
   homepage HTML at every path and discard the per-page metadata. The default
   static file handling on the hosts above already does the right thing.
-- Serve one hostname only — pick `meyora.in` or `www.meyora.in` and redirect the
-  other, since canonicals point at the bare domain
-- After the first deploy, submit `https://meyora.in/sitemap.xml` to Google
+- Serve one hostname only. Canonicals point at `www.meyora.in`, so set that as
+  the primary domain and 301-redirect the apex `meyora.in` to it
+- After the first deploy, submit `https://www.meyora.in/sitemap.xml` to Google
   Search Console to trigger indexing
