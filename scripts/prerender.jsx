@@ -13,7 +13,14 @@ import { fileURLToPath } from 'node:url';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
 import App from '../src/App.jsx';
-import { ROUTES, ROUTE_PATHS, SITE_URL, SITE_NAME, DEFAULT_OG_IMAGE } from '../src/data/seo.js';
+import {
+  ROUTES,
+  ROUTE_PATHS,
+  SITE_URL,
+  SITE_NAME,
+  DEFAULT_OG_IMAGE,
+  GOOGLE_SITE_VERIFICATION,
+} from '../src/data/seo.js';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dist = join(root, 'dist');
@@ -44,6 +51,7 @@ function headFor(pathname) {
   const tags = [
     `<title>${escape(title)}</title>`,
     `<meta name="description" content="${escape(description)}" />`,
+    `<meta name="google-site-verification" content="${GOOGLE_SITE_VERIFICATION}" />`,
     `<link rel="canonical" href="${url}" />`,
     `<meta name="robots" content="index, follow, max-image-preview:large" />`,
     `<meta property="og:type" content="website" />`,
@@ -77,9 +85,11 @@ for (const pathname of ROUTE_PATHS) {
   );
 
   const html = template
-    // strip the build's default title/description; per-route tags replace them
+    // strip the template's defaults; the per-route tags below replace them,
+    // otherwise each would appear twice in the output
     .replace(/\s*<title>[\s\S]*?<\/title>/, '')
     .replace(/\s*<meta name="description"[^>]*>/, '')
+    .replace(/\s*<meta name="google-site-verification"[^>]*>/, '')
     .replace('</head>', `  ${headFor(pathname)}\n</head>`)
     .replace('<div id="root"></div>', `<div id="root">${markup}</div>`);
 

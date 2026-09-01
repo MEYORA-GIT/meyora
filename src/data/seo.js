@@ -10,6 +10,13 @@ export const SITE_URL = 'https://www.meyora.in';
 export const SITE_NAME = 'Meyora';
 export const DEFAULT_OG_IMAGE = '/favicon.svg';
 
+/**
+ * Google Search Console ownership verification. Baked into every prerendered
+ * page by scripts/prerender.jsx. Not a secret — it is public in the HTML by
+ * design, and only proves ownership of this domain.
+ */
+export const GOOGLE_SITE_VERIFICATION = 'zEqtu09b7dtCVKqCzpFoq9__BwBwFKYSL-IXDzOZjlc';
+
 export const ROUTES = {
   '/': {
     title: 'Meyora — We solve problems worth solving',
