@@ -30,3 +30,6 @@ Thumbs.db
 
 # Misc scratch
 _extract/
+
+# Scratch commit-message files
+msg.tmp
