@@ -6,7 +6,7 @@
  *  - at runtime by the Seo component, so tags update on client-side navigation
  */
 
-export const SITE_URL = 'https://meyora.com';
+export const SITE_URL = 'https://meyora.in';
 export const SITE_NAME = 'Meyora';
 export const DEFAULT_OG_IMAGE = '/favicon.svg';
 
