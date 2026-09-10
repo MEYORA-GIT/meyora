@@ -1,12 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 import { PROBLEMS, WHY, INDUSTRIES, STEPS } from '../data/content';
 import { useToggleIndex } from '../hooks/useToggleIndex';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const industriesLoop = [...INDUSTRIES, ...INDUSTRIES];
 
 export default function Home() {
   const navigate = useNavigate();
   const [openProblem, toggleProblem] = useToggleIndex();
+
+  useScrollReveal();
 
   return (
     <div>
@@ -22,6 +25,7 @@ export default function Home() {
         }}
       >
         <div
+          data-parallax="0.35"
           style={{
             position: 'absolute',
             inset: 0,
@@ -56,6 +60,7 @@ export default function Home() {
           }}
         />
         <div
+          data-parallax="-0.5"
           style={{
             position: 'absolute',
             inset: 0,
@@ -114,7 +119,11 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="hero-content" style={{ position: 'relative', maxWidth: 1240, margin: '0 auto' }}>
+        <div
+          className="hero-content"
+          data-parallax="0.18"
+          style={{ position: 'relative', maxWidth: 1240, margin: '0 auto' }}
+        >
           <div
             style={{
               display: 'inline-flex',
@@ -187,6 +196,7 @@ export default function Home() {
         <div className="split-layout split-85-115" style={{ maxWidth: 1240, margin: '0 auto' }}>
           <div>
             <div
+              data-reveal
               style={{
                 fontFamily: "'IBM Plex Mono', monospace",
                 fontSize: 11.5,
@@ -198,6 +208,8 @@ export default function Home() {
               01 — About Meyora
             </div>
             <h2
+              data-reveal
+              data-reveal-delay="90"
               style={{
                 fontFamily: "'Space Grotesk', sans-serif",
                 fontWeight: 600,
@@ -211,16 +223,18 @@ export default function Home() {
             </h2>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 26 }}>
-            <p style={{ margin: 0, fontSize: 21, lineHeight: 1.6, fontWeight: 300, color: 'var(--text, #16161B)', textWrap: 'pretty' }}>
+            <p data-reveal data-reveal-delay={60} style={{ margin: 0, fontSize: 21, lineHeight: 1.6, fontWeight: 300, color: 'var(--text, #16161B)', textWrap: 'pretty' }}>
               Meyora exists to solve meaningful problems — not to ship software. We start every engagement with
               curiosity: what is actually broken, who does it hurt, and what would change if it were fixed?
             </p>
-            <p style={{ margin: 0, fontSize: 17, lineHeight: 1.72, color: 'var(--muted, #6E6A62)', textWrap: 'pretty' }}>
+            <p data-reveal data-reveal-delay={140} style={{ margin: 0, fontSize: 17, lineHeight: 1.72, color: 'var(--muted, #6E6A62)', textWrap: 'pretty' }}>
               Only once the problem is understood do we choose the tools. Sometimes that means an AI system.
               Sometimes an integration, a redesigned process, or a single automation that removes a thousand hours of
               manual work. The technology is never the point — the outcome is.
             </p>
             <div
+              data-reveal
+              data-reveal-delay={200}
               className="grid-stats-3"
               style={{
                 display: 'grid',
@@ -266,6 +280,7 @@ export default function Home() {
           <div style={{ display: 'flex', alignItems: 'end', justifyContent: 'space-between', gap: 40, flexWrap: 'wrap' }}>
             <div>
               <div
+                data-reveal
                 style={{
                   fontFamily: "'IBM Plex Mono', monospace",
                   fontSize: 11.5,
@@ -277,6 +292,8 @@ export default function Home() {
                 02 — Problems we solve
               </div>
               <h2
+                data-reveal
+                data-reveal-delay="90"
                 style={{
                   fontFamily: "'Space Grotesk', sans-serif",
                   fontWeight: 600,
@@ -302,6 +319,8 @@ export default function Home() {
                   key={p.title}
                   onClick={() => toggleProblem(i)}
                   className="card-lift"
+                  data-reveal
+                  data-reveal-delay={(i % 3) * 80}
                   style={{
                     textAlign: 'left',
                     background: 'var(--paper, #FBFAF7)',
@@ -379,6 +398,7 @@ export default function Home() {
       <section data-screen-label="Home / Why Meyora" className="pad-lg" style={{ background: 'var(--paper, #FBFAF7)' }}>
         <div style={{ maxWidth: 1240, margin: '0 auto' }}>
           <div
+            data-reveal
             style={{
               fontFamily: "'IBM Plex Mono', monospace",
               fontSize: 11.5,
@@ -390,6 +410,8 @@ export default function Home() {
             03 — Why Meyora
           </div>
           <h2
+            data-reveal
+            data-reveal-delay="90"
             style={{
               fontFamily: "'Space Grotesk', sans-serif",
               fontWeight: 600,
@@ -410,10 +432,12 @@ export default function Home() {
               border: '1px solid var(--line, #E5E1D8)',
             }}
           >
-            {WHY.map((w) => (
+            {WHY.map((w, i) => (
               <div
                 key={w.num}
                 className="why-cell"
+                data-reveal
+                data-reveal-delay={i * 70}
                 style={{
                   background: 'var(--paper, #FBFAF7)',
                   padding: '34px 26px 38px',
@@ -454,6 +478,7 @@ export default function Home() {
       >
         <div className="pad-x" style={{ maxWidth: 1240, margin: '0 auto' }}>
           <div
+            data-reveal
             style={{
               fontFamily: "'IBM Plex Mono', monospace",
               fontSize: 11.5,
@@ -465,6 +490,8 @@ export default function Home() {
             04 — Industries
           </div>
           <h2
+            data-reveal
+            data-reveal-delay="90"
             style={{
               fontFamily: "'Space Grotesk', sans-serif",
               fontWeight: 600,
@@ -517,6 +544,7 @@ export default function Home() {
       <section data-screen-label="Home / Our approach" className="pad-lg" style={{ background: 'var(--paper, #FBFAF7)' }}>
         <div style={{ maxWidth: 1240, margin: '0 auto' }}>
           <div
+            data-reveal
             style={{
               fontFamily: "'IBM Plex Mono', monospace",
               fontSize: 11.5,
@@ -528,6 +556,8 @@ export default function Home() {
             05 — Our approach
           </div>
           <h2
+            data-reveal
+            data-reveal-delay="90"
             style={{
               fontFamily: "'Space Grotesk', sans-serif",
               fontWeight: 600,
@@ -541,10 +571,12 @@ export default function Home() {
             Six moves, in order. Every time.
           </h2>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            {STEPS.map((s) => (
+            {STEPS.map((s, i) => (
               <div
                 key={s.num}
                 className="step-row step-grid"
+                data-reveal
+                data-reveal-delay={i * 60}
                 style={{
                   padding: '34px 0',
                   borderTop: '1px solid var(--line, #E5E1D8)',
@@ -597,6 +629,7 @@ export default function Home() {
         }}
       >
         <div
+          data-parallax="0.4"
           style={{
             position: 'absolute',
             inset: 0,
@@ -621,6 +654,8 @@ export default function Home() {
         />
         <div style={{ position: 'relative', maxWidth: 900, margin: '0 auto', textAlign: 'center' }}>
           <h2
+            data-reveal
+            data-reveal-delay="90"
             style={{
               fontFamily: "'Space Grotesk', sans-serif",
               fontWeight: 600,
