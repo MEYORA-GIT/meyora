@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { FAQS } from '../data/content';
+import { LEGAL } from '../data/legal';
 import { useToggleIndex } from '../hooks/useToggleIndex';
 import Select from '../components/Select';
 import { LogoMark } from '../components/Logo';
@@ -44,7 +46,14 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const fields = Object.fromEntries(new FormData(e.currentTarget).entries());
+    const { consent, ...fields } = Object.fromEntries(new FormData(e.currentTarget).entries());
+
+    // Backstop for the `required` attribute: never collect without consent.
+    if (!consent) {
+      setStatus('error');
+      setErrorMsg('Please confirm your consent so we can process your enquiry.');
+      return;
+    }
 
     if (!ACCESS_KEY) {
       setStatus('error');
@@ -64,6 +73,12 @@ export default function Contact() {
           from_name: 'Meyora website',
           subject: `New enquiry from ${fields.name || 'the Meyora website'}`,
           ...fields,
+          // Consent record (DPDP Act s.6(10)): proves notice and consent were given,
+          // and which version of the Privacy Policy the person agreed to.
+          consent_given: 'Yes — affirmative checkbox, not pre-ticked',
+          consent_timestamp: new Date().toISOString(),
+          consent_policy_version: LEGAL.policyVersion,
+          consent_purpose: 'Responding to this enquiry',
         }),
       });
       const json = await res.json().catch(() => ({}));
@@ -344,6 +359,26 @@ export default function Contact() {
                     className="field-textarea"
                   />
                 </label>
+
+                {/* DPDP Act s.5 notice: shown at the point of collection, not only behind a link */}
+                <p className="form-notice" id="form-notice">
+                  <strong>How we use this:</strong> we collect the details above only to reply to your enquiry. They
+                  reach us via our form provider, Web3Forms, and are kept for up to 12 months after our last
+                  conversation. We never use them for marketing or share them for advertising. You can access,
+                  correct or erase your data, or withdraw consent, at any time by emailing {CONTACT_EMAIL}, and you may
+                  complain to the Data Protection Board of India. See our{' '}
+                  <Link to="/privacy-policy">Privacy Policy</Link>.
+                </p>
+
+                {/* DPDP Act s.6: consent must be a clear affirmative act — never pre-ticked */}
+                <label className="form-consent">
+                  <input type="checkbox" name="consent" required aria-describedby="form-notice" />
+                  <span>
+                    I consent to Meyora processing the personal data I have entered, for the purpose of responding to
+                    my enquiry, as described in the <Link to="/privacy-policy">Privacy Policy</Link>.
+                  </span>
+                </label>
+
                 <div
                   style={{
                     gridColumn: '1 / -1',

@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import { LogoMark, Wordmark } from './Logo';
+import { openConsentSettings } from '../lib/consent';
 
 export default function Footer() {
   return (
@@ -29,6 +31,31 @@ export default function Footer() {
         <span>We don&rsquo;t build software. We solve problems worth solving.</span>
         <span>© 2026 Meyora</span>
       </div>
+
+      <nav
+        aria-label="Legal"
+        className="footer-links"
+        style={{
+          maxWidth: 1240,
+          margin: '28px auto 0',
+          paddingTop: 22,
+          borderTop: '1px solid rgba(255,255,255,0.08)',
+          fontSize: 13,
+        }}
+      >
+        <Link to="/privacy-policy" className="footer-link">
+          Privacy Policy
+        </Link>
+        <Link to="/terms" className="footer-link">
+          Terms &amp; Conditions
+        </Link>
+        <Link to="/cookie-policy" className="footer-link">
+          Cookie Policy
+        </Link>
+        <button type="button" className="footer-link" onClick={openConsentSettings}>
+          Cookie settings
+        </button>
+      </nav>
     </footer>
   );
 }

@@ -38,6 +38,22 @@ export const ROUTES = {
     description:
       'Tell us what you are trying to solve, not what technology you think you need. Every engagement begins with a 45-minute problem framing call. Reply within one business day.',
   },
+  '/privacy-policy': {
+    title: 'Privacy Policy | Meyora',
+    description:
+      'How Meyora collects, uses and protects personal data, and your rights under India’s Digital Personal Data Protection Act, 2023.',
+    priority: '0.3',
+  },
+  '/terms': {
+    title: 'Terms & Conditions | Meyora',
+    description: 'The terms that govern your use of the Meyora website.',
+    priority: '0.3',
+  },
+  '/cookie-policy': {
+    title: 'Cookie Policy | Meyora',
+    description: 'The cookies and browser storage the Meyora website uses, and how to change your choices.',
+    priority: '0.3',
+  },
 };
 
 export const ROUTE_PATHS = Object.keys(ROUTES);

@@ -13,6 +13,7 @@ import { fileURLToPath } from 'node:url';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
 import App from '../src/App.jsx';
+import { unresolvedLegalFields } from '../src/data/legal.js';
 import {
   ROUTES,
   ROUTE_PATHS,
@@ -116,7 +117,7 @@ writeFileSync(
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
     ROUTE_PATHS.map((p) => {
       const url = SITE_URL + (p === '/' ? '' : p);
-      return `  <url>\n    <loc>${url}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>${p === '/' ? '1.0' : '0.8'}</priority>\n  </url>`;
+      return `  <url>\n    <loc>${url}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>${ROUTES[p].priority ?? (p === '/' ? '1.0' : '0.8')}</priority>\n  </url>`;
     }).join('\n') +
     `\n</urlset>\n`,
   'utf8'
@@ -124,3 +125,13 @@ writeFileSync(
 
 console.log(`  wrote robots.txt and sitemap.xml`);
 console.log(`✓ prerendered ${count} routes`);
+
+/* Legal placeholders: published pages must not go live with TODO values. */
+const missing = unresolvedLegalFields();
+if (missing.length) {
+  console.warn('');
+  console.warn('  ⚠  LEGAL DETAILS NOT FILLED IN — fill these in src/data/legal.js before publishing:');
+  for (const field of missing) console.warn('       - ' + field);
+  console.warn('     The legal pages show "[to be published]" until then.');
+  console.warn('');
+}
