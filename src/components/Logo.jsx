@@ -1,61 +1,77 @@
+import { useId } from 'react';
+import { GOLD, MARK_H, MARK_PATHS, MARK_W, WORD_H, WORD_LETTERS, WORD_W } from './logoPaths';
+
 /**
- * Meyora brand marks.
+ * Meyora brand marks — the original logo from the visiting cards, redrawn as clean vectors
+ * (Music/meyora-brand-kit). Gold by default; pass `gold={false}` to use `color` / currentColor.
  *
- * LogoMark  — the angular "M" monogram on its own. Inherits currentColor, so it
- *             picks up whatever colour the surrounding element uses.
- * Wordmark  — the "MEYORA" lettering (wide uppercase tracking, per the brand lockup).
- * Logo      — mark + wordmark together.
+ * LogoMark — the five-piece "M" monogram. `size` is its height in px.
+ * Wordmark — the MEYORA lettering (spineless E, stencil R, open A). `size` is roughly the old font size.
+ * Logo     — mark + wordmark together.
  */
 
-export function LogoMark({ size = 22, className, style }) {
+function GoldGradient({ id }) {
+  return (
+    <defs>
+      <linearGradient id={id} x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stopColor={GOLD.top} />
+        <stop offset="0.55" stopColor={GOLD.mid} />
+        <stop offset="1" stopColor={GOLD.bottom} />
+      </linearGradient>
+    </defs>
+  );
+}
+
+export function LogoMark({ size = 22, gold = true, color, className, style }) {
+  const id = `mg${useId().replace(/:/g, '')}`;
+  const fill = gold ? `url(#${id})` : color || 'currentColor';
   return (
     <svg
-      width={size}
       height={size}
-      viewBox="0 0 100 100"
-      fill="currentColor"
+      width={(size * MARK_W) / MARK_H}
+      viewBox={`0 0 ${MARK_W} ${MARK_H}`}
       className={className}
       style={style}
       role="img"
       aria-label="Meyora"
     >
-      <path d="M6 94V6h26l18 36 18-36h26v88H70V54L56 78H44L30 54v40z" />
-      <path d="M43 83h14l-7 12z" />
+      {gold && <GoldGradient id={id} />}
+      <g fill={fill}>
+        {MARK_PATHS.map((d) => (
+          <path key={d} d={d} />
+        ))}
+      </g>
     </svg>
   );
 }
 
-/**
- * INTERIM TYPEFACE: the supplied logo's lettering has a spineless three-bar "E",
- * which no stock font reproduces — it looks custom-drawn. Exo 2 Light is the
- * closest available match (geometric, splayed M, circular O, wide tracking).
- * Swap `BRAND_FONT` once the real typeface name (or the vector lockup) is known.
- */
-const BRAND_FONT = "'Exo 2', 'Space Grotesk', sans-serif";
-
-export function Wordmark({ size = 15, color = '#FFFFFF', style }) {
+export function Wordmark({ size = 15, gold = true, color = '#FFFFFF', style }) {
+  const id = `wg${useId().replace(/:/g, '')}`;
+  const h = size * 0.78;
   return (
-    <span
-      style={{
-        fontFamily: BRAND_FONT,
-        fontWeight: 300,
-        fontSize: size,
-        letterSpacing: '0.26em',
-        textTransform: 'uppercase',
-        color,
-        ...style,
-      }}
+    <svg
+      height={h}
+      width={(h * WORD_W) / WORD_H}
+      viewBox={`0 -1 ${WORD_W} ${WORD_H}`}
+      style={{ display: 'block', ...style }}
+      role="img"
+      aria-label="Meyora"
     >
-      Meyora
-    </span>
+      {gold && <GoldGradient id={id} />}
+      <g fill={gold ? `url(#${id})` : color} fillRule="evenodd">
+        {WORD_LETTERS.map(([x, d]) => (
+          <path key={x} transform={`translate(${x} 0)`} d={d} />
+        ))}
+      </g>
+    </svg>
   );
 }
 
-export default function Logo({ markSize = 22, textSize = 15, color = '#FFFFFF', gap = 11 }) {
+export default function Logo({ markSize = 22, textSize = 15, gold = true, color = '#FFFFFF', gap = 11 }) {
   return (
     <span style={{ display: 'inline-flex', alignItems: 'center', gap }}>
-      <LogoMark size={markSize} style={{ color, flex: 'none' }} />
-      <Wordmark size={textSize} color={color} />
+      <LogoMark size={markSize} gold={gold} color={color} style={{ flex: 'none' }} />
+      <Wordmark size={textSize} gold={gold} color={color} />
     </span>
   );
 }

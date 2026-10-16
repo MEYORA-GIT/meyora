@@ -25,7 +25,7 @@ export default function Footer() {
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <LogoMark size={20} style={{ color: '#FFFFFF', flex: 'none' }} />
+          <LogoMark size={19} style={{ flex: 'none' }} />
           <Wordmark size={14} />
         </div>
         <span>We don&rsquo;t build software. We solve problems worth solving.</span>

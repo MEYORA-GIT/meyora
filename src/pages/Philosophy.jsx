@@ -43,7 +43,7 @@ export default function Philosophy() {
               style={{
                 position: 'absolute',
                 inset: 230,
-                background: 'radial-gradient(circle, var(--accent, #B8853C), transparent 70%)',
+                background: 'radial-gradient(circle, var(--accent2, #E8B083), transparent 70%)',
                 borderRadius: '50%',
               }}
             />

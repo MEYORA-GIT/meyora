@@ -1,7 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <title>Meyora</title>
-  <g fill="#0A0A0A">
-    <path d="M6 94V6h26l18 36 18-36h26v88H70V54L56 78H44L30 54v40z"/>
-    <path d="M43 83h14l-7 12z"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><title>Meyora</title><g fill="#000"><path d="M28 46.21L123.34 101.25L123.34 142.7L28 87.66Z"/><path d="M228 46.21L132.66 101.25L132.66 142.7L228 87.66Z"/><path d="M28 96.98L70.49 121.51L70.49 181.26L28 205.79Z"/><path d="M228 96.98L185.51 121.51L185.51 181.26L228 205.79Z"/><path d="M96.39 140.51L128 158.76L159.61 140.51L159.61 170.56L128 188.81L96.39 170.56Z"/></g></svg>

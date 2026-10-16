@@ -77,7 +77,7 @@ export default function Home() {
               style={{
                 position: 'absolute',
                 inset: 220,
-                border: '1px dashed color-mix(in srgb, var(--accent, #B8853C) 45%, transparent)',
+                border: '1px dashed color-mix(in srgb, var(--accent2, #E8B083) 45%, transparent)',
                 borderRadius: '50%',
               }}
             />
@@ -89,7 +89,7 @@ export default function Home() {
                 width: 8,
                 height: 8,
                 borderRadius: '50%',
-                background: 'var(--accent, #B8853C)',
+                background: 'var(--accent2, #E8B083)',
                 animation: 'mPulse 5s ease-in-out infinite',
               }}
             />
@@ -101,7 +101,7 @@ export default function Home() {
                 width: 6,
                 height: 6,
                 borderRadius: '50%',
-                background: 'var(--accent2, #8C7A5E)',
+                background: 'var(--accent, #A0653C)',
                 animation: 'mPulse 7s ease-in-out infinite',
               }}
             />
@@ -140,7 +140,7 @@ export default function Home() {
               color: 'rgba(255,255,255,0.68)',
             }}
           >
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent, #B8853C)' }} />
+            <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent2, #E8B083)' }} />
             A problem-solving company
           </div>
           <h1

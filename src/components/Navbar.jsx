@@ -27,8 +27,8 @@ export default function Navbar() {
             flex: 'none',
           }}
         >
-          {/* brand mark is monochrome black; inverted to white on the dark bar */}
-          <LogoMark size={21} style={{ color: '#FFFFFF', flex: 'none' }} />
+          {/* the gold mark + wordmark from the visiting cards */}
+          <LogoMark size={20} style={{ flex: 'none' }} />
           <Wordmark size={15} />
         </button>
 

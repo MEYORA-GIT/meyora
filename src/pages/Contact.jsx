@@ -222,7 +222,7 @@ export default function Contact() {
           >
             {status === 'sent' ? (
               <div className="rise-in" style={{ display: 'flex', flexDirection: 'column', gap: 16, padding: '40px 0' }}>
-                <LogoMark size={34} style={{ color: 'var(--ink, #101317)' }} />
+                <LogoMark size={34} />
                 <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 28, fontWeight: 500, letterSpacing: '-0.02em', margin: 0 }}>
                   Thank you — we&apos;re reading it now.
                 </h3>
@@ -498,7 +498,7 @@ export default function Contact() {
             }}
           >
             We don&apos;t measure success by the software we ship.
-            <span style={{ display: 'block', color: 'var(--accent, #B8853C)', marginTop: 12 }}>
+            <span style={{ display: 'block', color: 'var(--accent2, #E8B083)', marginTop: 12 }}>
               We measure it by the problems we solve.
             </span>
           </p>

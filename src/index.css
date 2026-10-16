@@ -1,16 +1,17 @@
 :root {
-  /* Brand palette — Graphite & Ice Blue */
-  --ink: #101317;
-  --ink2: #1b2027;
-  --paper: #f7f8f9;
-  --paper2: #edeff2;
-  --line: #dde1e6;
-  --text: #12161b;
-  --muted: #6b7480;
-  --accent: #5e8ca8;
-  --accent2: #9aafbd;
-  --glow1: rgba(94, 140, 168, 0.3);
-  --glow2: rgba(154, 175, 189, 0.2);
+  /* Brand palette — Graphite & Gold (from the Meyora logo / visiting cards) */
+  --ink: #0d0d10;
+  --ink2: #18171c;
+  --paper: #fbf9f6;
+  --paper2: #f3eee7;
+  --line: #e6dfd5;
+  --text: #16151a;
+  --muted: #6e6a62;
+  --accent: #a0653c;            /* copper — text, links and accents on light backgrounds (AA) */
+  --accent2: #e8b083;           /* gold — highlights on dark backgrounds */
+  --gold-grad: linear-gradient(180deg, #f9cba2 0%, #e8b083 55%, #cf976c 100%);
+  --glow1: rgba(232, 176, 131, 0.3);
+  --glow2: rgba(160, 101, 60, 0.2);
 
   /* Layout rhythm */
   --nav-h: 58px;
@@ -200,14 +201,15 @@ button {
   right: 14px;
   bottom: 0;
   height: 2px;
-  background: var(--accent, #b8853c);
+  background: var(--gold-grad, #e8b083);
 }
 
 /* ---------- Buttons ---------- */
 
 .btn-primary {
-  background: var(--accent, #b8853c);
-  color: #ffffff;
+  background: var(--gold-grad, #e8b083);
+  color: var(--ink, #0d0d10);
+  font-weight: 600;
   border: none;
   border-radius: 999px;
   cursor: pointer;
